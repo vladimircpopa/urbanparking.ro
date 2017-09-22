@@ -138,6 +138,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for table `parking_slot`
 --
+ALTER TABLE `parking`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `parking_slot`
+--
 ALTER TABLE `parking_slot`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --

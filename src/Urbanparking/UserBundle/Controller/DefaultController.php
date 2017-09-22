@@ -41,7 +41,7 @@ class DefaultController extends Controller
         $repository = $this->getDoctrine()->getRepository(Users::class);
         $user = $repository->findOneByEmail($email);
 
-        if ($user && $password == $user->getPassword()) {
+        if ($user && $password === $user->getPassword()) {
             $session->set('user_id', $user->getId());
             return $this->redirectToRoute('homepage');
         }

@@ -38,18 +38,15 @@ class ParkingsController extends AbstractApiController implements ClassResourceI
      *   }
      * )
      *
-     * @Annotations\QueryParam(name="name", requirements="\d+", default="0", strict=true, nullable=true, description="Offset from which to start listing items")
-     * @Annotations\QueryParam(name="latitude", requirements="\d+", default="5", strict=true, nullable=true, description="How many items to return")
-     * @Annotations\QueryParam(name="longitude", requirements="\d+", default="5", strict=true, nullable=true, description="How many items to return")
-     * 
-     * @param ParamFetcher $paramFetcher The request parameters validator
+     * @Annotations\QueryParam(name="name", strict=true, nullable=false, description="The name of the parking")
+     * @Annotations\QueryParam(name="latitude", strict=true, nullable=true, description="Longitude of the parking")
+     * @Annotations\QueryParam(name="longitude", strict=true, nullable=true, description="Latitude of the parking")
      * 
      * @return View
      */
-    public function cgetAction(ParamFetcher $paramFetcher)
+    public function cgetAction()
     {
-        
-        $parkings = $this->getRepository()->fetch($paramFetcher);
+        $parkings = $this->getRepository()->findAll();
 
         return new View($parkings, Response::HTTP_OK);
     }

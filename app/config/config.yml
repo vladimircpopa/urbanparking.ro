@@ -2,6 +2,8 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
+    - { resource: "@AppBundle/Resources/config/config.yml" }
+
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -71,3 +73,28 @@ sonata_block:
         # enable the SonataAdminBundle block
         sonata.admin.block.admin_list:
             contexts: [admin]
+
+
+fos_rest:
+    param_fetcher_listener: true
+    body_listener: 
+        service: api_body_listener
+    format_listener: true
+    body_converter: true
+    view:
+        formats:
+            json : true
+        templating_formats:
+            html: true
+        force_redirects:
+            html: true
+        failed_validation: HTTP_BAD_REQUEST
+        default_engine: twig
+        view_response_listener: true
+    routing_loader:
+        default_format: json
+        include_format: false
+    serializer:
+        serialize_null: true
+
+nelmio_api_doc: ~

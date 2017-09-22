@@ -5,3 +5,7 @@ NelmioApiDocBundle:
 api_parkings:
     type: rest
     resource: ApiBundle:Parkings
+
+api_reservations:
+    type: rest
+    resource: ApiBundle:Reservations

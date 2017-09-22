@@ -5,17 +5,13 @@ namespace AppBundle\Service;
 use Symfony\Component\DependencyInjection\Container;
 use AppBundle\Service\AbstractEntityService;
 use AppBundle\Entity\Parking;
-use AppBundle\Entity\ParkingSlot;
-use AppBundle\Entity\Penlaty;
-use AppBundle\Entity\Reservation;
-use AppBundle\Entity\Users;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Gabriel Rondelli <gabriel.rondelli@orange.com>
  */
-class BlackoutService extends AbstractEntityService 
+class ParkingService extends AbstractEntityService
 {
 
     const ENTITY_PATH = 'AppBundle:Parking';

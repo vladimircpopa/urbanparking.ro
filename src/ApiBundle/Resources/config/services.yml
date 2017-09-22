@@ -1,0 +1,14 @@
+services:
+    api_body_listener:
+        class: ApiBundle\Listener\ApiBodyListener
+        arguments: ['@fos_rest.decoder_provider', '%fos_rest.throw_exception_on_unsupported_content_type%']    
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest, priority: 10 }
+        calls:
+            - [setDefaultFormat, ['%fos_rest.body_default_format%']]            
+
+    api_exception_listener:
+        class: ApiBundle\Listener\ApiExceptionListener
+        arguments: [ "@logger" ]
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 1000 }

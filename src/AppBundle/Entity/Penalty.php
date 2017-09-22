@@ -38,8 +38,6 @@ class Penalty
      */
     private $reservation;
 
-
-
     /**
      * Set extraTime
      *

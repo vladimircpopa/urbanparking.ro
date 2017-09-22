@@ -70,7 +70,6 @@ class Reservation
     private $parkingSlot;
 
 
-
     /**
      * Set startTime
      *

@@ -43,7 +43,6 @@ class Users
     private $id;
 
 
-
     /**
      * Set name
      *

@@ -39,7 +39,6 @@ class ParkingSlot
     private $parking;
 
 
-
     /**
      * Set name
      *

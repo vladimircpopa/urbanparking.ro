@@ -1,0 +1,19 @@
+<html>
+    <body>
+        <h1>Login or Leave!</h1>
+
+        {% for message in messages %}
+            <div style="color: red;"> {{ message }}</div>
+        {% endfor %}
+
+        <form method="post">
+            <label>
+                <input name="email" type="email" placeholder="email@mahserver.ro" />
+            </label>
+            <label>
+                <input name="password" type="password" placeholder="Password" />
+            </label>
+            <button>Login</button>
+        </form>
+    </body>
+</html>

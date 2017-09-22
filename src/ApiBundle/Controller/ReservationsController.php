@@ -11,27 +11,23 @@ use FOS\RestBundle\View\View;
 use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\Controller\Annotations;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use AppBundle\Entity\Parking;
-use AppBundle\Entity\ParkingSlot;
-use AppBundle\Entity\Penalty;
 use AppBundle\Entity\Reservation;
-use AppBundle\Entity\Users;
 
 
 /**
  * @author Gabriel Rondelli <gabriel.rondelli@orange.com>
  */
-class ParkingsController extends AbstractApiController implements ClassResourceInterface {
+class ReservationsController extends AbstractApiController implements ClassResourceInterface {
 
-    const ENTITY_PATH = 'AppBundle:Parking';
+    const ENTITY_PATH = 'AppBundle:Reservation';
 
     /**
-     * Returns a collection of Parking
+     * Returns a collection of Reservations
      *
      * @ApiDoc(
-     *   section = "Parking",
+     *   section = "Reservation",
      *   resource = true,
-     *   description = "Returns a collection of Parking",
+     *   description = "Returns a collection of Reservation",
      *   output = "AppBundle\Entity\Parking",
      *   statusCodes = {
      *     200 = "Returned when successful"
@@ -51,7 +47,7 @@ class ParkingsController extends AbstractApiController implements ClassResourceI
         return new View($parkings, Response::HTTP_OK);
     }
 
-  
+
 
 }
 

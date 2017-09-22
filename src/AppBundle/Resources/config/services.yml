@@ -3,3 +3,8 @@ services:
     parking_service:
         class: AppBundle\Service\ParkingService
         arguments: [ "@service_container" ]
+
+        
+    parking_slot_service:
+        class: AppBundle\Service\ParkingSlotService
+        arguments: [ "@service_container" ]

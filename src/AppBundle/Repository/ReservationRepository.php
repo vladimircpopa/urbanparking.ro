@@ -10,9 +10,9 @@ use Doctrine\DBAL\Types\Type;
 // use AppBundle\Entity\Frequency;
 
 
-class ParkingRepository extends AbstractRepository {
+class ReservationRepository extends AbstractRepository {
 
-    /**
+ /**
      * @param ParamFetcher $paramFetcher
      * @return array
      */
@@ -20,8 +20,6 @@ class ParkingRepository extends AbstractRepository {
     {
         $qb = $this
                 ->createQueryBuilder('i')
-                ->setFirstResult($paramFetcher->get('offset'))
-                ->setMaxResults($paramFetcher->get('limit'))
                 ->orderBy('i.id', 'ASC')
         ;
 
@@ -29,7 +27,4 @@ class ParkingRepository extends AbstractRepository {
 
         return $qb->getQuery()->getResult();
     }
-
-
-
 }

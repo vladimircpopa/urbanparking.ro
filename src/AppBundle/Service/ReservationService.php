@@ -4,20 +4,20 @@ namespace AppBundle\Service;
 
 use Symfony\Component\DependencyInjection\Container;
 use AppBundle\Service\AbstractEntityService;
-use AppBundle\Entity\Parking;
+use AppBundle\Entity\Reservation;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Gabriel Rondelli <gabriel.rondelli@orange.com>
  */
-class ParkingService extends AbstractEntityService 
+class ReservationService extends AbstractEntityService 
 {
 
-    const ENTITY_PATH = 'AppBundle:Parking';
+    const ENTITY_PATH = 'AppBundle:Reservation';
 
     /**
-     * @var \AppBundle\Repository\ParkingRepository
+     * @var \AppBundle\Repository\ReservationRepository
      */
     protected $repository;
     
@@ -25,19 +25,19 @@ class ParkingService extends AbstractEntityService
     {
         parent::__construct($service_container);
         
-        $this->repository = $this->entityManager->getRepository('AppBundle:Parking');
+        $this->repository = $this->entityManager->getRepository('AppBundle:Reservation');
     }   
         
     
-    public function createParking(Request $request, Parking $parking = null)
+    public function createReservation(Request $request, Reservation $reservation = null)
     {
-        $parking = $parking ? $parking : new Parking;
+        $reservation = $reservation ? $reservation : new Reservation;
 
         $em = $this->entityManager;
         
-        $em->persist($parking);
+        $em->persist($reservation);
         $em->flush();
 
-        return $parking;
+        return $reservation;
     }
 }

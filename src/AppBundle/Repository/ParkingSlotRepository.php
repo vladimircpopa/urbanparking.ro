@@ -6,11 +6,8 @@ use AppBundle\Repository\AbstractRepository;
 use FOS\RestBundle\Request\ParamFetcher;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\DBAL\Types\Type;
-// use AppBundle\Entity\State;
-// use AppBundle\Entity\Frequency;
 
-
-class ParkingRepository extends AbstractRepository {
+class ParkingSlotRepository extends AbstractRepository{
 
     /**
      * @param ParamFetcher $paramFetcher
@@ -20,9 +17,12 @@ class ParkingRepository extends AbstractRepository {
     {
         $qb = $this
                 ->createQueryBuilder('i')
-                ->setFirstResult($paramFetcher->get('offset'))
-                ->setMaxResults($paramFetcher->get('limit'))
-                ->orderBy('i.id', 'ASC')
+                ->where('i.start_time >= :startDate')
+                ->andWhere('i.end_time <= :endDate')
+                ->setParameter('startDate',$paramFetcher->get('startDate'))
+                ->setParameter('endDate', $paramFetcher->get('endDate'))
+                ->setParameter('parkingId', $paramFetcher->get('parkingId'))
+
         ;
 
         $qb = $this->fetchParameters($qb, $paramFetcher);

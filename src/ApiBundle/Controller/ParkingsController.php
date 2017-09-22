@@ -51,5 +51,7 @@ class ParkingsController extends AbstractApiController implements ClassResourceI
         return new View($parkings, Response::HTTP_OK);
     }
 
+  
+
 }
 

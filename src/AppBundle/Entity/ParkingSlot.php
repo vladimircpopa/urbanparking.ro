@@ -3,12 +3,20 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Traits\TimestampableTrait;
+use Symfony\Component\Validator\Constraints;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\Index;
+
 
 /**
  * ParkingSlot
- *
+ * 
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ParkingSlotRepository")
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Table(name="parking_slot", indexes={@ORM\Index(name="parking_id", columns={"parking_id"})})
- * @ORM\Entity
  */
 class ParkingSlot
 {

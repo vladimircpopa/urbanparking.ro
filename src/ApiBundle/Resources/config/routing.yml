@@ -9,3 +9,7 @@ api_parkings:
 api_reservations:
     type: rest
     resource: ApiBundle:Reservations
+
+api_parking_slot_service:
+    type: rest
+    resource: ApiBundle:ParkingSlots

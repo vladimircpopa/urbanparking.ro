@@ -159,7 +159,7 @@ class DefaultController extends Controller
     public function letMeInAction()
     {
         $session = new Session();
-        $userId = $session->get('user_id');
+        $userId = 1;
         if ($userId) {
             $repository = $this->getDoctrine()->getRepository(Users::class);
             $user = $repository->find($userId);

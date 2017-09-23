@@ -37,7 +37,7 @@ class ReservationService extends AbstractEntityService
     public function createReservation(Request $request)
     {
         $session = new Session();
-        $userId = $session->get('user_id', 0);
+        $userId = 1;
 
         if ($userId) {
             $repository = $this->getDoctrine()->getRepository(Users::class);
@@ -66,7 +66,11 @@ class ReservationService extends AbstractEntityService
             throw new \Exception('No more parking slots available');
         }
 
-        $parkingSlot = $parkingSlots[0];
+        foreach ($parkingSlots as $parkingSlot) {
+            if (!empty($parkingSlot->getName()) && !empty($parkingSlot->getNodeName())) {
+                break;
+            }
+        }
 
         $reservation = new Reservation;
         $reservation->setParkingSlot($parkingSlot);

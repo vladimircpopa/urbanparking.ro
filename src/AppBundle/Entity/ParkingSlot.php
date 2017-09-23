@@ -28,6 +28,13 @@ class ParkingSlot
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="node_name", type="string", length=255, nullable=false)
+     */
+    private $node_name;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -69,6 +76,30 @@ class ParkingSlot
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set node name
+     *
+     * @param string $nodeName
+     *
+     * @return ParkingSlot
+     */
+    public function setNodeName($nodeName)
+    {
+        $this->node_name = $nodeName;
+
+        return $this;
+    }
+
+    /**
+     * Get node name
+     *
+     * @return string
+     */
+    public function getNodeName()
+    {
+        return $this->node_name;
     }
 
     /**

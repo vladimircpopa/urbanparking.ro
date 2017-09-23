@@ -62,6 +62,10 @@ class ReservationService extends AbstractEntityService
 
         $parkingSlotRepository = $this->getDoctrine()->getRepository(ParkingSlot::class);
         $parkingSlots = $parkingSlotRepository->findAll();
+        if (count($parkingSlots) == 0) {
+            throw new \Exception('No more parking slots available');
+        }
+
         $parkingSlot = $parkingSlots[0];
 
         $reservation = new Reservation;

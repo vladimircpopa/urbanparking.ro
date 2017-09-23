@@ -17,10 +17,10 @@ use Doctrine\ORM\EntityManagerInterface;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/login", name="login")
+     * @Route("/loginWeb", name="login")
      * @Method({"GET"})
      */
-    public function indexAction()
+    public function indexWebAction()
     {
         $session = new Session();
 
@@ -29,6 +29,40 @@ class DefaultController extends Controller
         return $this->render('UserBundle:Default:login.html.twig', array(
             'messages' => $messages
         ));
+    }
+
+    /**
+     * @Route("/loginWeb")
+     * @Method({"POST"})
+     */
+    public function loginWebAction(Request $request)
+    {
+        $session = new Session();
+
+        $email = $request->request->get('email');
+        $password = $request->request->get('password');
+
+        $repository = $this->getDoctrine()->getRepository(Users::class);
+        $user = $repository->findOneByEmail($email);
+
+        if ($user && $password === $user->getPassword()) {
+            $session->set('user_id', $user->getId());
+            return $this->redirectToRoute('homepage');
+        }
+
+        $session->getFlashBag()->add('error', 'Invalid email or password!');
+        return $this->redirectToRoute('loginWeb');
+    }
+
+    /**
+     * @Route("/logoutWeb")
+     */
+    public function logoutWebAction()
+    {
+        $session = new Session();
+        $session->remove('user_id');
+
+        return $this->redirectToRoute('homepage');
     }
 
     /**
@@ -47,11 +81,11 @@ class DefaultController extends Controller
 
         if ($user && $password === $user->getPassword()) {
             $session->set('user_id', $user->getId());
-            return $this->redirectToRoute('homepage');
+
+            return new Response('{success: 1}');
         }
 
-        $session->getFlashBag()->add('error', 'Invalid email or password!');
-        return $this->redirectToRoute('login');
+        return new Response("{success: 0, message: 'Invalid email or password!'}");
     }
 
     /**
@@ -61,8 +95,7 @@ class DefaultController extends Controller
     {
         $session = new Session();
         $session->remove('user_id');
-
-        return $this->redirectToRoute('homepage');
+        return new Response('{success: 1}');
     }
 
     /**

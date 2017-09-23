@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Urban Parking</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/available-slots.css">
+    </head>
+
+    <body>
+        <div id="logo">
+            <img class="image-group" src="../img/Logo.png" />
+            <img class="image-group" src="../img/FREEPARK.png" />
+            <img class="image-group spaces" src="../img/SPACES.png" />
+        </div>
+
+        <div class='input-login-group'>
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            <span>Available spots</span>
+            <span id="available-spots">13</span>
+        </div>
+
+        <button class="button" id='find-spot' onclick="bookParkingSpot()">
+            <img class="image" src="../img/BookNow.png">
+        </button>
+
+        <div>
+            <span class="image-group">47</span>
+            <img class="image-group" src="../img/Leitopay.png" />
+        </div>
+        <div>
+            <img class="image" src="../img/foryourselectedinter.png" />
+        </div>
+
+        <script src="../js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+        <script src="../js/vendor/bootstrap.min.js"></script>
+        <script src="../js/main.js"></script>
+    </body>
+</html>

@@ -44,6 +44,8 @@ WHERE
             $parkingSlotIds[] = $row['parking_slot_id'];
         }
 
+        $parkingSlotIds = array(0);
+
         $sql = "SELECT `id`,`name` 
           FROM `parking_slot` WHERE `id` NOT IN  (?) AND `parking_id` = ?
         ";

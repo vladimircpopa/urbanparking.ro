@@ -82,10 +82,10 @@ class DefaultController extends Controller
         if ($user && $password === $user->getPassword()) {
             $session->set('user_id', $user->getId());
 
-            return new Response('{success: 1}');
+            return new Response('{"success": 1}');
         }
 
-        return new Response("{success: 0, message: 'Invalid email or password!'}");
+        return new Response('{"success": 0, "message": "Invalid email or password!"}');
     }
 
     /**
